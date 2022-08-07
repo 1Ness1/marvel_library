@@ -34,9 +34,13 @@ class RandomChar extends Component {
     this.setState({ character, loading: false });
   };
 
+  onCharacterLoading = () => {
+    this.setState({ loading: true });
+  };
+
   updateCurrentChar = () => {
     const id = this._getRandomCharacterId();
-
+    this.onCharacterLoading();
     this.marvelService
       .getCertainCharacterFromMarvel(id)
       .then(this.onCharacterLoaded)
